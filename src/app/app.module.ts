@@ -16,6 +16,7 @@ import { HomeComponent } from './Home/Home.component';
 import { ProductsComponent } from './Products/Products.component';
 import { Product_DetailsComponent } from './Product_Details/Product_Details.component';
 import { CategoryComponent } from './Category/Category.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [													
@@ -36,7 +37,8 @@ import { CategoryComponent } from './Category/Category.component';
    ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
