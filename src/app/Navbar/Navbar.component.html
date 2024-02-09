@@ -1,3 +1,49 @@
-<p>
-  Navbar works!
-</p>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/home" aria-current="page"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/brands">Brands</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/category">Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+        <li class="nav-item d-flex justify-content-center ">
+          <a class="nav-link"><i class="fab fa-facebook"></i></a>
+          <a class="nav-link"><i class="fab fa-linkedin"></i></a>
+          <a class="nav-link"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li class="nav-item d-flex">
+          <a class="nav-link" routerLink="/sign-in"><i class="fas fa-user"></i>&nbsp;sign-in</a>
+          <a class="nav-link" routerLink="/sign-up"><i class="fas fa-user-plus"></i>&nbsp;sign-up</a>
+          <a class="nav-link" routerLink="/sign-out"><i class="fas fa-sign-out-alt"></i>&nbsp;sign-out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

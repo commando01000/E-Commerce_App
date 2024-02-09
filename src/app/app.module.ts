@@ -12,9 +12,13 @@ import { WishlistComponent } from './Wishlist/Wishlist.component';
 import { ProfileComponent } from './Profile/Profile.component';
 import { SignInComponent } from './Sign-in/Sign-in.component';
 import { SignUpComponent } from './Sign-up/Sign-up.component';
+import { HomeComponent } from './Home/Home.component';
+import { ProductsComponent } from './Products/Products.component';
+import { Product_DetailsComponent } from './Product_Details/Product_Details.component';
+import { CategoryComponent } from './Category/Category.component';
 
 @NgModule({
-  declarations: [									
+  declarations: [													
     AppComponent,
       NavbarComponent,
       FooterComponent,
@@ -24,7 +28,11 @@ import { SignUpComponent } from './Sign-up/Sign-up.component';
       WishlistComponent,
       ProfileComponent,
       SignInComponent,
-      SignUpComponent
+      SignUpComponent,
+      HomeComponent,
+      ProductsComponent,
+      Product_DetailsComponent,
+      CategoryComponent
    ],
   imports: [
     BrowserModule,
