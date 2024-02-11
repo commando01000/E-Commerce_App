@@ -30,17 +30,17 @@
                     This is required input !
                   </p>
                   <p
-                  *ngIf="registerForm.get('name')?.getError('minlength')"
-                  class="text-danger"
-                >
-                  Length is less than 3 characters
-                </p>
-                <p
-                *ngIf="registerForm.get('name')?.getError('maxlength')"
-                class="text-danger"
-              >
-                Length is more than 16 characters
-              </p>
+                    *ngIf="registerForm.get('name')?.getError('minlength')"
+                    class="text-danger"
+                  >
+                    Length is less than 3 characters
+                  </p>
+                  <p
+                    *ngIf="registerForm.get('name')?.getError('maxlength')"
+                    class="text-danger"
+                  >
+                    Length is more than 16 characters
+                  </p>
                 </div>
               </div>
               <div class="mb-3">
@@ -53,6 +53,26 @@
                   id="email"
                   placeholder="Email"
                 />
+                <div
+                  *ngIf="
+                    registerForm.get('email')?.errors &&
+                    registerForm.get('email')?.touched
+                  "
+                  class="email-error"
+                >
+                  <p
+                    *ngIf="registerForm.get('email')?.getError('required')"
+                    class="text-danger"
+                  >
+                    This is required input !
+                  </p>
+                  <p
+                    *ngIf="registerForm.get('email')?.getError('email')"
+                    class="text-danger"
+                  >
+                    Enter a valid Email !
+                  </p>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
@@ -64,6 +84,28 @@
                   id="password"
                   placeholder="Password"
                 />
+                <div
+                  *ngIf="
+                    registerForm.get('password')?.errors &&
+                    registerForm.get('password')?.touched
+                  "
+                  class="password-error"
+                >
+                  <p
+                    *ngIf="registerForm.get('password')?.getError('required')"
+                    class="text-danger"
+                  >
+                    This is required input !
+                  </p>
+                  <p
+                    *ngIf="registerForm.get('password')?.getError('pattern')"
+                    class="text-danger"
+                  >
+                    Password must be at least 8 characters long and include at
+                    least one uppercase letter, one lowercase letter, one digit,
+                    and one special character .
+                  </p>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="repassword" class="form-label">re-Password</label>
@@ -75,6 +117,30 @@
                   id="repassword"
                   placeholder="re-Password"
                 />
+                <div
+                  *ngIf="
+                    registerForm.get('rePassword')?.errors &&
+                    registerForm.get('rePassword')?.touched
+                  "
+                  class="rePassword-error"
+                >
+                  <p
+                    *ngIf="registerForm.get('rePassword')?.getError('required')"
+                    class="text-danger"
+                  >
+                    This is required input !
+                  </p>
+                  <p
+                    *ngIf="
+                      registerForm.get('rePassword')?.getError('pattern')
+                    "
+                    class="text-danger"
+                  >
+                    Password must be at least 8 characters long and include at
+                    least one uppercase letter, one lowercase letter, one digit,
+                    and one special character .
+                  </p>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="phone" class="form-label">phone</label>
@@ -86,10 +152,32 @@
                   id="phone"
                   placeholder="phone"
                 />
+                <div
+                *ngIf="
+                  registerForm.get('phone')?.errors &&
+                  registerForm.get('phone')?.touched
+                "
+                class="phone-error"
+              >
+                <p
+                  *ngIf="registerForm.get('phone')?.getError('required')"
+                  class="text-danger"
+                >
+                  This is required input !
+                </p>
+                <p
+                  *ngIf="
+                    registerForm.get('phone')?.getError('pattern')
+                  "
+                  class="text-danger"
+                >
+                  Enter a valid phone number !
+                </p>
+              </div>
               </div>
             </div>
             <div>
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button [disabled]="registerForm.invalid" type="submit" class="btn btn-success">Submit</button>
             </div>
           </div>
         </div>

@@ -21,13 +21,13 @@ export class SignUpComponent implements OnInit {
     password: new FormControl(null, [
       Validators.required,
       Validators.pattern(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
       ),
     ]),
     rePassword: new FormControl(null,[
       Validators.required,
       Validators.pattern(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
       ),
     ]),
     phone: new FormControl(null,[Validators.required,Validators.pattern("^01[0125][0-9]{8}$")]),
