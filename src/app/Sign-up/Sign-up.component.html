@@ -16,6 +16,32 @@
                   id="name"
                   placeholder="Name"
                 />
+                <div
+                  *ngIf="
+                    registerForm.get('name')?.errors &&
+                    registerForm.get('name')?.touched
+                  "
+                  class="name-error"
+                >
+                  <p
+                    *ngIf="registerForm.get('name')?.getError('required')"
+                    class="text-danger"
+                  >
+                    This is required input !
+                  </p>
+                  <p
+                  *ngIf="registerForm.get('name')?.getError('minlength')"
+                  class="text-danger"
+                >
+                  Length is less than 3 characters
+                </p>
+                <p
+                *ngIf="registerForm.get('name')?.getError('maxlength')"
+                class="text-danger"
+              >
+                Length is more than 16 characters
+              </p>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>

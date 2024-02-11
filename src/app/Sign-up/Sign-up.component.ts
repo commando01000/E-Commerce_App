@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-Sign-up',
@@ -12,13 +12,27 @@ export class SignUpComponent implements OnInit {
   ngOnInit() {}
 
   registerForm: FormGroup = new FormGroup({
-    name: new FormControl(null),
-    email: new FormControl(null),
-    password: new FormControl(null),
-    rePassword: new FormControl(null),
-    phone: new FormControl(null),
+    name: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(16),
+    ]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    password: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/
+      ),
+    ]),
+    rePassword: new FormControl(null,[
+      Validators.required,
+      Validators.pattern(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/
+      ),
+    ]),
+    phone: new FormControl(null,[Validators.required,Validators.pattern("^01[0125][0-9]{8}$")]),
   });
-  onSubmit(form:FormGroup) {
+  onSubmit(form: FormGroup) {
     console.log(form);
   }
 }
