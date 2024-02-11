@@ -17,30 +17,31 @@ import { ProductsComponent } from './Products/Products.component';
 import { Product_DetailsComponent } from './Product_Details/Product_Details.component';
 import { CategoryComponent } from './Category/Category.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  declarations: [													
+  declarations: [
     AppComponent,
-      NavbarComponent,
-      FooterComponent,
-      NotFoundPageComponent,
-      CartComponent,
-      BrandsComponent,
-      WishlistComponent,
-      ProfileComponent,
-      SignInComponent,
-      SignUpComponent,
-      HomeComponent,
-      ProductsComponent,
-      Product_DetailsComponent,
-      CategoryComponent
-   ],
+    NavbarComponent,
+    FooterComponent,
+    NotFoundPageComponent,
+    CartComponent,
+    BrandsComponent,
+    WishlistComponent,
+    ProfileComponent,
+    SignInComponent,
+    SignUpComponent,
+    HomeComponent,
+    ProductsComponent,
+    Product_DetailsComponent,
+    CategoryComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
