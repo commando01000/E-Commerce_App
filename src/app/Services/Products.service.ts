@@ -10,4 +10,9 @@ export class ProductsService {
   getAllProducts(): Observable<any> {
     return this._http.get(`https://ecommerce.routemisr.com/api/v1/products`);
   }
+  getProductDetails(id: number): Observable<any> {
+    return this._http.get(
+      `https://ecommerce.routemisr.com/api/v1/products/${id}`
+    )
+  }
 }

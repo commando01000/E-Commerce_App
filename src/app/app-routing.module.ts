@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './Home/Home.component';
+import { HomeComponent } from './components/Home/Home.component';
 import { SignInComponent } from './Authentication/Sign-in/Sign-in.component';
 import { SignUpComponent } from './Authentication/Sign-up/Sign-up.component';
 import { BrandsComponent } from './components/Brands/Brands.component';
@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'category',
     component: CategoryComponent,
+  },
+  {
+    path: 'product_details/:productId',
+    component: ProductDetailsComponent,
   },
   {
     path: 'product_details/:id',
