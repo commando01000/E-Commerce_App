@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Home/Home.component';
-import { SignInComponent } from './components/Sign-in/Sign-in.component';
-import { SignUpComponent } from './components/Sign-up/Sign-up.component';
+import { SignInComponent } from './Authentication/Sign-in/Sign-in.component';
+import { SignUpComponent } from './Authentication/Sign-up/Sign-up.component';
 import { BrandsComponent } from './components/Brands/Brands.component';
 import { ProductsComponent } from './components/Products/Products.component';
 import { ProductDetailsComponent } from './components/ProductDetails/ProductDetails.component';
