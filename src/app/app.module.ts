@@ -14,7 +14,7 @@ import { SignInComponent } from './Sign-in/Sign-in.component';
 import { SignUpComponent } from './Sign-up/Sign-up.component';
 import { HomeComponent } from './Home/Home.component';
 import { ProductsComponent } from './Products/Products.component';
-import { Product_DetailsComponent } from './Product_Details/Product_Details.component';
+import { ProductDetailsComponent } from './ProductDetails/ProductDetails.component';
 import { CategoryComponent } from './Category/Category.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     SignUpComponent,
     HomeComponent,
     ProductsComponent,
-    Product_DetailsComponent,
+    ProductDetailsComponent,
     CategoryComponent,
   ],
   imports: [

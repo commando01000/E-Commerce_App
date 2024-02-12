@@ -5,7 +5,7 @@ import { SignInComponent } from './Sign-in/Sign-in.component';
 import { SignUpComponent } from './Sign-up/Sign-up.component';
 import { BrandsComponent } from './Brands/Brands.component';
 import { ProductsComponent } from './Products/Products.component';
-import { Product_DetailsComponent } from './Product_Details/Product_Details.component';
+import { ProductDetailsComponent } from './ProductDetails/ProductDetails.component';
 import { CategoryComponent } from './Category/Category.component';
 import { CartComponent } from './Cart/Cart.component';
 
@@ -45,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'product_details/:id',
-    component: Product_DetailsComponent,
+    component: ProductDetailsComponent,
   },
 ];
 
