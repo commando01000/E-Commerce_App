@@ -7,18 +7,34 @@
   </head>
   <body>
     <section id="products">
-      <div class="container">
+      <div *ngIf="!isLoading; else loading" class="container">
         <div class="row gy-3">
           <h1 class="text-center">Products</h1>
           <div *ngFor="let product of products" class="col-md-3">
-            <div class="card product">
+            <div class="card overflow-hidden p-2 product">
               <img [src]="product.imageCover" alt="{{ product.title }}" />
               <p>{{ product.category.name }}</p>
-              <p>{{ product.price | currency }}</p>
+              <div class="description d-flex justify-content-between">
+                <p>{{ product.price | currency }}</p>
+                <p>
+                  {{ product.ratingsQuantity }}
+                  <i class="rating-color fas fa-star"></i>
+                </p>
+              </div>
+              <button class="btn bg-main w-100 text-light">
+                Add to cart <i class="fas fa-shopping-cart"></i>
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <ng-template #loading>
+        <div
+          class="loading d-flex vh-100 justify-content-center align-items-center"
+        >
+          <i class="fas fa-spinner fa-spin fa-5x text-main"></i>
+        </div>
+      </ng-template>
     </section>
   </body>
 </html>
