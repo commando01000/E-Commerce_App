@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Home/Home.component';
-import { SignInComponent } from './Sign-in/Sign-in.component';
-import { SignUpComponent } from './Sign-up/Sign-up.component';
-import { BrandsComponent } from './Brands/Brands.component';
-import { ProductsComponent } from './Products/Products.component';
-import { ProductDetailsComponent } from './ProductDetails/ProductDetails.component';
-import { CategoryComponent } from './Category/Category.component';
-import { CartComponent } from './Cart/Cart.component';
+import { SignInComponent } from './components/Sign-in/Sign-in.component';
+import { SignUpComponent } from './components/Sign-up/Sign-up.component';
+import { BrandsComponent } from './components/Brands/Brands.component';
+import { ProductsComponent } from './components/Products/Products.component';
+import { ProductDetailsComponent } from './components/ProductDetails/ProductDetails.component';
+import { CategoryComponent } from './components/Category/Category.component';
+import { CartComponent } from './components/Cart/Cart.component';
 
 const routes: Routes = [
   {
