@@ -131,9 +131,7 @@
                     This is required input !
                   </p>
                   <p
-                    *ngIf="
-                      registerForm.get('rePassword')?.getError('pattern')
-                    "
+                    *ngIf="registerForm.get('rePassword')?.getError('pattern')"
                     class="text-danger"
                   >
                     Password must be at least 8 characters long and include at
@@ -153,31 +151,44 @@
                   placeholder="phone"
                 />
                 <div
-                *ngIf="
-                  registerForm.get('phone')?.errors &&
-                  registerForm.get('phone')?.touched
-                "
-                class="phone-error"
-              >
-                <p
-                  *ngIf="registerForm.get('phone')?.getError('required')"
-                  class="text-danger"
-                >
-                  This is required input !
-                </p>
-                <p
                   *ngIf="
-                    registerForm.get('phone')?.getError('pattern')
+                    registerForm.get('phone')?.errors &&
+                    registerForm.get('phone')?.touched
                   "
-                  class="text-danger"
+                  class="phone-error"
                 >
-                  Enter a valid phone number !
-                </p>
-              </div>
+                  <p
+                    *ngIf="registerForm.get('phone')?.getError('required')"
+                    class="text-danger"
+                  >
+                    This is required input !
+                  </p>
+                  <p
+                    *ngIf="registerForm.get('phone')?.getError('pattern')"
+                    class="text-danger"
+                  >
+                    Enter a valid phone number !
+                  </p>
+                </div>
               </div>
             </div>
             <div>
-              <button [disabled]="registerForm.invalid" type="submit" class="btn btn-success">Submit</button>
+              <p *ngIf="errors?.length" class="text-danger">{{ errors }}</p>
+              <button
+                [disabled]="registerForm.invalid"
+                type="submit"
+                class="btn btn-success"
+              >
+                Submit
+                <span *ngIf="isLoading">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </span>
+              </button>
+              <div>
+                <p>
+                  Already have an account ? <a class="text-success" routerLink="/sign-in">Login</a>
+                </p>
+              </div>
             </div>
           </div>
         </div>

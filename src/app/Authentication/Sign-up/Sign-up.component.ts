@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SignUpService } from 'src/app/Services/Sign-Up.service';
 
 @Component({
   selector: 'app-Sign-up',
@@ -7,7 +9,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./Sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
-  constructor() {}
+  
+  errors: string[] = [];
+  isLoading: boolean = false;
+
+  constructor(private _signUpService: SignUpService,private _Route:Router) {}
 
   ngOnInit() {}
 
@@ -34,5 +40,20 @@ export class SignUpComponent implements OnInit {
   });
   onSubmit(form: FormGroup) {
     console.log(form);
+    this.isLoading = true;
+    if (form.valid) {
+      this._signUpService.Register(form.value).subscribe({
+        next: (response) => {
+          console.log(response);
+          this._Route.navigate(['sign-in']);
+          this.isLoading = false;
+        },
+        error: (err) => {
+          console.log(err.error.message);
+          this.errors = err.error.message;
+          this.isLoading = false;
+        },
+      });
+    }
   }
 }
