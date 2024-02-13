@@ -10,7 +10,9 @@ import { Product } from '../../interfaces/Product';
 export class HomeComponent implements OnInit {
   products: Product[] = [];
   isLoading: boolean = true;
-  constructor(private _productsService: ProductsService) {
+  constructor(private _productsService: ProductsService) {}
+
+  ngOnInit() {
     this._productsService.getAllProducts().subscribe({
       next: (results) => {
         console.log(results.data);
@@ -25,6 +27,4 @@ export class HomeComponent implements OnInit {
       },
     });
   }
-
-  ngOnInit() {}
 }
