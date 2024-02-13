@@ -1,3 +1,105 @@
-<p>
-  Sign-in works!
-</p>
+<section id="sign-in">
+  <div class="container">
+    <h1>Login to your account</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+      <div class="row">
+        <div class="col-md-8 m-auto bg-light shadow p-5 my-3">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              name="email"
+              id="email"
+              placeholder="Enter Your Email"
+            />
+            <div
+              *ngIf="
+                loginForm.get('email')?.errors &&
+                loginForm.get('email')?.touched
+              "
+              class="email-errors"
+            >
+              <p
+                *ngIf="loginForm.get('email')?.getError('required')"
+                class="text-danger"
+              >
+                this is a required input !
+              </p>
+              <p
+                *ngIf="loginForm.get('email')?.getError('email')"
+                class="text-danger"
+              >
+                Enter a valid Email !
+              </p>
+            </div>
+            <div class="mb-3 mt-2">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+                name="password"
+                id="password"
+                aria-describedby="helpId"
+                placeholder="password"
+              />
+              <div
+                *ngIf="
+                  loginForm.get('password')?.errors &&
+                  loginForm.get('password')?.touched
+                "
+                class="password-errors"
+              >
+                <p
+                  *ngIf="loginForm.get('password')?.getError('required')"
+                  class="text-danger"
+                >
+                  this is a required input !
+                </p>
+                <p
+                  *ngIf="loginForm.get('password')?.getError('minlength')"
+                  class="text-danger"
+                >
+                  Length is less than 8 characters !">
+                </p>
+                <p
+                  *ngIf="loginForm.get('password')?.getError('maxlength')"
+                  class="text-danger"
+                >
+                  Length is more than 20 characters !">
+                </p>
+                <p
+                  *ngIf="loginForm.get('password')?.getError('pattern')"
+                  class="text-danger"
+                >
+                  Password must be at least 8 characters long and include at
+                  least one uppercase letter, one lowercase letter, one digit,
+                  and one special character .
+                </p>
+              </div>
+            </div>
+            <br />
+            <div>
+              <button
+                [disabled]="loginForm.invalid"
+                class="btn btn-success float-end"
+              >
+                Login
+                <span *ngIf="isLoading">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </span>
+              </button>
+            </div>
+            <br />
+            <p>
+              Don't have an account ?
+              <a class="text-success" routerLink="/sign-up">Sign Up</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
