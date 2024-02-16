@@ -8,19 +8,23 @@ import { ProductsComponent } from './components/Products/Products.component';
 import { ProductDetailsComponent } from './components/ProductDetails/ProductDetails.component';
 import { CategoryComponent } from './components/Category/Category.component';
 import { CartComponent } from './components/Cart/Cart.component';
+import { authenticationGuard } from './Guards/Authentication.guard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [authenticationGuard],
     component: HomeComponent,
     pathMatch: 'full',
   },
   {
     path: 'home',
+    canActivate: [authenticationGuard],
     component: HomeComponent,
   },
   {
     path: 'brands',
+    canActivate: [authenticationGuard],
     component: BrandsComponent,
   },
   {
@@ -29,6 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
+    canActivate: [authenticationGuard],
     component: CartComponent,
   },
   {
@@ -37,18 +42,22 @@ const routes: Routes = [
   },
   {
     path: 'products',
+    canActivate: [authenticationGuard],
     component: ProductsComponent,
   },
   {
     path: 'category',
+    canActivate: [authenticationGuard],
     component: CategoryComponent,
   },
   {
     path: 'product_details/:productId',
+    canActivate: [authenticationGuard],
     component: ProductDetailsComponent,
   },
   {
     path: 'product_details/:id',
+    canActivate: [authenticationGuard],
     component: ProductDetailsComponent,
   },
 ];
