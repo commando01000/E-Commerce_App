@@ -13,7 +13,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+      <ul *ngIf="isLogin" class="navbar-nav me-auto mt-2 mt-lg-0">
         <li class="nav-item">
           <a class="nav-link active" routerLink="/home" aria-current="page"
             >Home</a
@@ -29,7 +29,9 @@
           <a class="nav-link" routerLink="/products">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
+          <a class="nav-link" routerLink="/cart"
+            ><i class="fas fa-shopping-cart"></i
+          ></a>
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
@@ -38,10 +40,18 @@
           <a class="nav-link"><i class="fab fa-linkedin"></i></a>
           <a class="nav-link"><i class="fab fa-twitter"></i></a>
         </li>
-        <li class="nav-item d-flex">
-          <a class="nav-link" routerLink="/sign-in"><i class="fas fa-user"></i>&nbsp;sign-in</a>
-          <a class="nav-link" routerLink="/sign-up"><i class="fas fa-user-plus"></i>&nbsp;sign-up</a>
-          <a class="nav-link" routerLink="/sign-out"><i class="fas fa-sign-out-alt"></i>&nbsp;sign-out</a>
+        <li *ngIf="!isLogin" class="nav-item d-flex">
+          <a class="nav-link" routerLink="/sign-in"
+            ><i class="fas fa-user"></i>&nbsp;sign-in</a
+          >
+          <a class="nav-link" routerLink="/sign-up"
+            ><i class="fas fa-user-plus"></i>&nbsp;sign-up</a
+          >
+        </li>
+        <li *ngIf="isLogin">
+          <a (click)="logout()" class="nav-link" routerLink="/sign-out"
+            ><i class="fas fa-sign-out-alt"></i>&nbsp;sign-out</a
+          >
         </li>
       </ul>
     </div>

@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignInService } from '../../Services/Sign-In.service';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
+import { AuthorizedUserDataService } from 'src/app/Services/AuthorizedUserData.service';
 @Component({
   selector: 'app-Sign-in',
   templateUrl: './Sign-in.component.html',
   styleUrls: ['./Sign-in.component.css'],
 })
 export class SignInComponent implements OnInit {
-
   isLoading: boolean = false;
-
-  constructor(private _SignIn:SignInService, private _Route:Router) {}
+  constructor(private _SignIn: SignInService, private _Route: Router, private _AuthUser:AuthorizedUserDataService) {}
 
   ngOnInit() {}
 
@@ -31,7 +31,9 @@ export class SignInComponent implements OnInit {
     if (loginForm.valid) {
       this._SignIn.validateUser(loginForm.value).subscribe({
         next: (response) => {
-          console.log(response);
+          console.log(response.token);
+          localStorage.setItem('token', response.token);
+          this._AuthUser.getUserData();
           this._Route.navigate(['home']);
           this.isLoading = false;
         },
@@ -43,7 +45,7 @@ export class SignInComponent implements OnInit {
           console.log('completed !');
           this.isLoading = false;
         },
-      })
+      });
     }
   }
 }
