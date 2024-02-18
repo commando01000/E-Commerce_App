@@ -10,6 +10,7 @@ import { CategoryComponent } from './components/Category/Category.component';
 import { CartComponent } from './components/Cart/Cart.component';
 import { authenticationGuard } from './Guards/Authentication.guard';
 import { LoginGuard } from './Guards/Login.guard';
+import { ForgotPasswordComponent } from './components/ForgotPassword/ForgotPassword.component';
 const routes: Routes = [
   {
     path: '',
@@ -28,7 +29,8 @@ const routes: Routes = [
     component: BrandsComponent,
   },
   {
-    path: 'sign-in',canActivate: [LoginGuard],
+    path: 'sign-in',
+    canActivate: [LoginGuard],
     component: SignInComponent,
   },
   {
@@ -49,6 +51,10 @@ const routes: Routes = [
     path: 'category',
     canActivate: [authenticationGuard],
     component: CategoryComponent,
+  },
+  {
+    path: 'ForgotPassword',
+    component: ForgotPasswordComponent,
   },
   {
     path: 'product_details/:productId',
