@@ -13,7 +13,10 @@ export class ForgotPasswordComponent implements OnInit {
   successVerificationMessage!: string;
   codeErrorMessage!: string;
 
-  constructor(private forgotPasswordService: ForgotPasswordService, private _Route: Router) {}
+  constructor(
+    private forgotPasswordService: ForgotPasswordService,
+    private _Route: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -48,9 +51,10 @@ export class ForgotPasswordComponent implements OnInit {
       next: (response) => {
         this.successVerificationMessage = response.status;
         this.codeErrorMessage = '';
-        setInterval(() => {
-          this._Route.navigate(['/ResetPassword']);
-        },1500)
+        let x = setInterval(() => {
+          this._Route.navigate(['ResetPassword']);
+          clearInterval(x);
+        }, 1500);
       },
       error: (err) => {
         this.codeErrorMessage = err.error.message;

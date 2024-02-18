@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ForgotPasswordService } from 'src/app/Services/ForgotPassword.service';
@@ -6,12 +6,14 @@ import { ForgotPasswordService } from 'src/app/Services/ForgotPassword.service';
 @Component({
   selector: 'app-ResetPassword',
   templateUrl: './ResetPassword.component.html',
-  styleUrls: ['./ResetPassword.component.css']
+  styleUrls: ['./ResetPassword.component.css'],
 })
 export class ResetPasswordComponent implements OnInit {
-
- isLoading: boolean = false;
-  constructor(private _ForgotPassword: ForgotPasswordService, private _Route: Router) {}
+  isLoading: boolean = false;
+  constructor(
+    private _ForgotPassword: ForgotPasswordService,
+    private _Route: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -31,8 +33,9 @@ export class ResetPasswordComponent implements OnInit {
     if (resetPasswordForm.valid) {
       this._ForgotPassword.resetPassword(resetPasswordForm.value).subscribe({
         next: (response) => {
-          this._Route.navigate(['sign-in']);
+          console.log('Reset password successful. Navigating to sign-in...');
           this.isLoading = false;
+          this._Route.navigate(['sign-in']);
         },
         error: (err) => {
           console.log(err.errors.message);
@@ -40,10 +43,8 @@ export class ResetPasswordComponent implements OnInit {
         },
         complete: () => {
           console.log('completed !');
-          this.isLoading = false;
         },
       });
     }
   }
-
 }
