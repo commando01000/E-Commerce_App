@@ -12,7 +12,6 @@ export class AuthorizedUserDataService {
     if (localStorage.getItem('token')) {
       this.getUserData();
       console.log(this.userData);
-      
     }
   }
   getUserData(): any {

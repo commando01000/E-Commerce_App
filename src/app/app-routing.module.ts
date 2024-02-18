@@ -9,7 +9,7 @@ import { ProductDetailsComponent } from './components/ProductDetails/ProductDeta
 import { CategoryComponent } from './components/Category/Category.component';
 import { CartComponent } from './components/Cart/Cart.component';
 import { authenticationGuard } from './Guards/Authentication.guard';
-
+import { LoginGuard } from './Guards/Login.guard';
 const routes: Routes = [
   {
     path: '',
@@ -28,7 +28,7 @@ const routes: Routes = [
     component: BrandsComponent,
   },
   {
-    path: 'sign-in',
+    path: 'sign-in',canActivate: [LoginGuard],
     component: SignInComponent,
   },
   {
