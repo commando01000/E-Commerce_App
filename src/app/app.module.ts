@@ -18,6 +18,8 @@ import { ProductDetailsComponent } from './components/ProductDetails/ProductDeta
 import { CategoryComponent } from './components/Category/Category.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ForgotPasswordComponent } from './components/ForgotPassword/ForgotPassword.component';
+import { ResetPasswordComponent } from './components/ResetPassword/ResetPassword.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsComponent,
     ProductDetailsComponent,
     CategoryComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

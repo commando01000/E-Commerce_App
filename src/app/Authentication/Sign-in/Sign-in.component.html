@@ -79,6 +79,7 @@
                   and one special character .
                 </p>
               </div>
+              <p *ngIf="errorMsg" class="text-danger">{{errorMsg}}</p>
             </div>
             <br />
             <div>
@@ -92,7 +93,6 @@
                 </span>
               </button>
             </div>
-            <br />
             <p>
               Don't have an account ?
               <a class="text-success" routerLink="/sign-up">Sign Up</a>

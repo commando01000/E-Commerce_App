@@ -11,6 +11,7 @@ import { AuthorizedUserDataService } from 'src/app/Services/AuthorizedUserData.s
 })
 export class SignInComponent implements OnInit {
   isLoading: boolean = false;
+  errorMsg!: string;
   constructor(private _SignIn: SignInService, private _Route: Router, private _AuthUser:AuthorizedUserDataService) {}
 
   ngOnInit() {}
@@ -38,7 +39,8 @@ export class SignInComponent implements OnInit {
           this.isLoading = false;
         },
         error: (err) => {
-          console.log(err.errors.message);
+          console.log(err);
+          this.errorMsg = err.error.message;
           this.isLoading = false;
         },
         complete: () => {

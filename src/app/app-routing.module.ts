@@ -11,6 +11,7 @@ import { CartComponent } from './components/Cart/Cart.component';
 import { authenticationGuard } from './Guards/Authentication.guard';
 import { LoginGuard } from './Guards/Login.guard';
 import { ForgotPasswordComponent } from './components/ForgotPassword/ForgotPassword.component';
+import { ResetPasswordComponent } from './components/ResetPassword/ResetPassword.component';
 const routes: Routes = [
   {
     path: '',
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: 'ForgotPassword',
     component: ForgotPasswordComponent,
+  },
+  {
+    path: 'ResetPassword',
+    component: ResetPasswordComponent,
   },
   {
     path: 'product_details/:productId',
