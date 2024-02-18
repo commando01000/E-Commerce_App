@@ -20,6 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgotPasswordComponent } from './components/ForgotPassword/ForgotPassword.component';
 import { ResetPasswordComponent } from './components/ResetPassword/ResetPassword.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,8 @@ import { ResetPasswordComponent } from './components/ResetPassword/ResetPassword
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent],

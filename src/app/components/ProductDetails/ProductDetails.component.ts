@@ -19,7 +19,7 @@ export class ProductDetailsComponent implements OnInit {
     // console.log(this._ActivatedRoute);
 
     // this._ActivatedRoute.snapshot.params['productId'];
-    this.productID = this._ActivatedRoute.snapshot.paramMap.get('productId');
+    this.productID = this._ActivatedRoute.snapshot.paramMap.get('id');
     // console.log(this._ActivatedRoute.snapshot.paramMap.get('productId'));
     this._ProductsService.getProductDetails(this.productID).subscribe({
       next: (results) => {

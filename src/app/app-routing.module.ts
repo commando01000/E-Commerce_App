@@ -62,11 +62,6 @@ const routes: Routes = [
     component: ResetPasswordComponent,
   },
   {
-    path: 'product_details/:productId',
-    canActivate: [authenticationGuard],
-    component: ProductDetailsComponent,
-  },
-  {
     path: 'product_details/:id',
     canActivate: [authenticationGuard],
     component: ProductDetailsComponent,
