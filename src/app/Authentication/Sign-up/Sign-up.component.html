@@ -138,6 +138,12 @@
                     least one uppercase letter, one lowercase letter, one digit,
                     and one special character .
                   </p>
+                  <p
+                    *ngIf="registerForm.get('rePassword')?.getError('notMatch')"
+                    class="text-danger"
+                  >
+                    Passwords doesn't match !
+                  </p>
                 </div>
               </div>
               <div class="mb-3">
@@ -186,7 +192,8 @@
               </button>
               <div>
                 <p>
-                  Already have an account ? <a class="text-success" routerLink="/sign-in">Login</a>
+                  Already have an account ?
+                  <a class="text-success" routerLink="/sign-in">Login</a>
                 </p>
               </div>
             </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormControlOptions, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignUpService } from 'src/app/Services/Sign-Up.service';
 
@@ -37,7 +37,18 @@ export class SignUpComponent implements OnInit {
       ),
     ]),
     phone: new FormControl(null,[Validators.required,Validators.pattern("^01[0125][0-9]{8}$")]),
-  });
+  },{validators:[this.confirmPassword]} as FormControlOptions);
+
+  confirmPassword(regForm: FormGroup) {
+    if (regForm.get('password')?.value !== regForm.get('rePassword')?.value) {
+      regForm.get('rePassword')?.setErrors({ notMatch: true });
+    }
+    else if(regForm.get('rePassword')?.value === '')
+    {
+      regForm.get('rePassword')?.setErrors({required:true})
+    }
+  }
+
   onSubmit(form: FormGroup) {
     console.log(form);
     this.isLoading = true;
