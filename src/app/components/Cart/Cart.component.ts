@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { CartService } from 'src/app/Services/Cart.service';
 
 @Component({
