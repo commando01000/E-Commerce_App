@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { CartService } from 'src/app/Services/Cart.service';
 
 @Component({
@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
     return this._cartService.getUserCart().subscribe({
       next: (response) => {
         // console.log(response);
+        this._cartService.numCartItems.next(response.numOfCartItems);
         this.userCart = response.data.products;
         // console.log(this.userCart);
 
@@ -29,7 +30,7 @@ export class CartComponent implements OnInit {
         console.log(err);
       },
       complete: () => {
-        console.log('completed !');
+        // console.log('completed !');
       },
     });
   }
@@ -42,12 +43,13 @@ export class CartComponent implements OnInit {
       next: (response) => {
         // console.log(response);
         this.getUserCart();
+        this._cartService.numCartItems.next(response.numOfCartItems);
       },
       error: (err) => {
         console.log(err);
       },
       complete: () => {
-        console.log('completed !');
+        // console.log('completed !');
       },
     });
   }
@@ -57,12 +59,13 @@ export class CartComponent implements OnInit {
       next: (response) => {
         console.log(response);
         this.getUserCart();
+        this._cartService.numCartItems.next(response.numOfCartItems);
       },
       error: (err) => {
         console.log(err);
       },
       complete: () => {
-        console.log('completed !');
+        // console.log('completed !');
       },
     });
   }

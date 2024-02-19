@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
     this._cartService.addToCart(productID).subscribe({
       next: (response) => {
         console.log(response);
+        this._cartService.numCartItems.next(response.numOfCartItems);
         this.toastr.success(response.message, response.status, {
           closeButton:true,
           progressBar:true,

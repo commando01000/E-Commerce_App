@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorizedUserDataService } from 'src/app/Services/AuthorizedUserData.service';
+import { CartService } from 'src/app/Services/Cart.service';
 
 @Component({
   selector: 'app-Navbar',
@@ -8,7 +9,20 @@ import { AuthorizedUserDataService } from 'src/app/Services/AuthorizedUserData.s
 })
 export class NavbarComponent implements OnInit {
   isLogin: boolean = false;
-  constructor(private _AuthUser: AuthorizedUserDataService) {
+  cartItems!:number;
+  constructor(private _AuthUser: AuthorizedUserDataService, private _cartService: CartService) {
+    this._cartService.numCartItems.subscribe({
+      next: (response) => {
+        // console.log(response);
+        this.cartItems = response;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('completed !');
+      },
+    })
     _AuthUser.userData.subscribe({
       next: () => {
         if (this._AuthUser.userData.getValue()) {
