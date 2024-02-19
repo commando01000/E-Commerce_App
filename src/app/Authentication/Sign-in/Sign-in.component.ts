@@ -28,12 +28,12 @@ export class SignInComponent implements OnInit {
   });
 
   onSubmit(loginForm: any) {
-    console.log(loginForm);
+    // console.log(loginForm);
     this.isLoading = true;
     if (loginForm.valid) {
       this._SignIn.validateUser(loginForm.value).subscribe({
         next: (response) => {
-          console.log(response.token);
+          // console.log(response.token);
           localStorage.setItem('token', response.token);
           this._AuthUser.getUserData();
           this._Route.navigate(['home']);
