@@ -31,11 +31,10 @@
           <h1 class="text-center">Products</h1>
           <div
             *ngFor="let product of products"
-            [routerLink]="['/product_details', product._id]"
             class="col-md-3"
           >
             <div class="card overflow-hidden p-2 product">
-              <img [src]="product.imageCover" alt="{{ product.title }}" />
+              <img [src]="product.imageCover" [routerLink]="['/product_details', product._id]" alt="{{ product.title }}" />
               <p>{{ product.category.name }}</p>
               <div class="description d-flex justify-content-between">
                 <p>{{ product.price | currency }}</p>
@@ -44,7 +43,7 @@
                   <i class="rating-color fas fa-star"></i>
                 </p>
               </div>
-              <button class="btn bg-main w-100 text-light">
+              <button (click)="addToCart(product._id)" class="btn bg-main w-100 text-light">
                 Add to cart <i class="fas fa-shopping-cart"></i>
               </button>
             </div>

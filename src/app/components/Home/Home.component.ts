@@ -3,6 +3,8 @@ import { ProductsService } from '../../Services/Products.service';
 import { Product } from '../../interfaces/Product';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CategoriesService } from 'src/app/Services/Categories.service';
+import { CartService } from 'src/app/Services/Cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-Home',
@@ -13,7 +15,12 @@ export class HomeComponent implements OnInit {
   products: Product[] = [];
   categories: any[] = [];
   isLoading: boolean = true;
-  constructor(private _productsService: ProductsService, private _CategoryService: CategoriesService) {}
+  constructor(
+    private _productsService: ProductsService,
+    private _CategoryService: CategoriesService,
+    private _cartService: CartService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit() {
     this.getCategories();
@@ -37,10 +44,32 @@ export class HomeComponent implements OnInit {
       next: (results) => {
         this.categories = results.data;
         console.log(this.categories);
-        
       },
       error: (err) => {
         console.log(err);
+      },
+      complete: () => {
+        console.log('completed !');
+      },
+    });
+  }
+
+  addToCart(productID: any) {
+    this._cartService.addToCart(productID).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.toastr.success(response.message, response.status, {
+          closeButton:true,
+          progressBar:true,
+        });
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.error(err.message, 'Error', {
+          timeOut: 2000,
+          closeButton:true,
+          progressBar:true,
+        });
       },
       complete: () => {
         console.log('completed !');
@@ -71,6 +100,5 @@ export class HomeComponent implements OnInit {
       },
     },
     nav: true,
-  }
-
+  };
 }

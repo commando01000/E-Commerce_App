@@ -1,3 +1,52 @@
-<p>
-  Cart works!
-</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Cart</title>
+  </head>
+  <body>
+    <section id="cart">
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+          <h1 class="text-center pb-3">My Cart</h1>
+          <div class="col-md-10">
+            <span class ="fw-bold text-success">Total Price : {{totalCartPrice | currency}}</span>
+            <div *ngFor="let item of userCart" class="row bg-light shadow p-5">
+              <div class="col-md-2">
+                <img
+                  [src]="item?.product?.imageCover"
+                  class="w-100"
+                  [alt]="item?.product?.title"
+                />
+              </div>
+              <div class="col-md-10 d-flex justify-content-between align-items-center">
+                <div>
+                  <p>{{ item?.product?.title }}</p>
+                  <p>{{ item?.price | currency }}</p>
+                  <button class="btn btn-outline-danger">
+                    Remove <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+                <div>
+                  <button
+                    class="btn btn-outline-success"
+                  >
+                  +
+                  </button>
+                  <span class="mx-2">{{ item?.count }}</span>
+                  <button
+                    class="btn btn-outline-success"
+                  >
+                  -
+                  </button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

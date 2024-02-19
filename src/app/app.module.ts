@@ -22,6 +22,7 @@ import { ForgotPasswordComponent } from './components/ForgotPassword/ForgotPassw
 import { ResetPasswordComponent } from './components/ResetPassword/ResetPassword.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
