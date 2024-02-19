@@ -9,8 +9,11 @@ import { CartService } from 'src/app/Services/Cart.service';
 })
 export class NavbarComponent implements OnInit {
   isLogin: boolean = false;
-  cartItems!:number;
-  constructor(private _AuthUser: AuthorizedUserDataService, private _cartService: CartService) {
+  cartItems!: number;
+  constructor(
+    private _AuthUser: AuthorizedUserDataService,
+    private _cartService: CartService
+  ) {
     this._cartService.numCartItems.subscribe({
       next: (response) => {
         // console.log(response);
@@ -22,11 +25,12 @@ export class NavbarComponent implements OnInit {
       complete: () => {
         console.log('completed !');
       },
-    })
+    });
+
     _AuthUser.userData.subscribe({
       next: () => {
         if (this._AuthUser.userData.getValue()) {
-          console.log(this._AuthUser.userData);
+          // console.log(this._AuthUser.userData);
           this.isLogin = true;
           console.log('there is user data');
         } else {
@@ -36,14 +40,13 @@ export class NavbarComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
-  
+
   ngOnInit() {}
 
   logout() {
     this._AuthUser.removeUserData();
   }
-
 }

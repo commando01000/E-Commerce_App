@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     this.getCategories();
     this._productsService.getAllProducts().subscribe({
       next: (results) => {
-        console.log(results.data);
+        // console.log(results.data);
         this.products = results.data;
         this.isLoading = false;
       },
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
         console.log(err);
       },
       complete: () => {
-        console.log('completed !');
+        // console.log('completed !');
       },
     });
   }
@@ -43,13 +43,13 @@ export class HomeComponent implements OnInit {
     this._CategoryService.getCategories().subscribe({
       next: (results) => {
         this.categories = results.data;
-        console.log(this.categories);
+        // console.log(this.categories);
       },
       error: (err) => {
         console.log(err);
       },
       complete: () => {
-        console.log('completed !');
+        // console.log('completed !');
       },
     });
   }
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
   addToCart(productID: any) {
     this._cartService.addToCart(productID).subscribe({
       next: (response) => {
-        console.log(response);
+        // console.log(response);
         this._cartService.numCartItems.next(response.numOfCartItems);
         this.toastr.success(response.message, response.status, {
           closeButton:true,
@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
         });
       },
       complete: () => {
-        console.log('completed !');
+        // console.log('completed !');
       },
     });
   }

@@ -11,7 +11,7 @@ export class AuthorizedUserDataService {
   constructor(private _Route: Router) {
     if (localStorage.getItem('token')) {
       this.getUserData();
-      console.log(this.userData);
+      // console.log(this.userData);
     }
   }
   getUserData(): any {
