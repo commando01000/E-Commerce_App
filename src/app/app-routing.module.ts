@@ -12,8 +12,9 @@ import { authenticationGuard } from './Guards/Authentication.guard';
 import { LoginGuard } from './Guards/Login.guard';
 import { ForgotPasswordComponent } from './Authentication/ForgotPassword/ForgotPassword.component';
 import { ResetPasswordComponent } from './Authentication/ResetPassword/ResetPassword.component';
-import { ForgotPasswordGuard} from './Guards/ForgotPassword.guard';
+import { ForgotPasswordGuard } from './Guards/ForgotPassword.guard';
 import { resetPasswordGuard } from './Guards/ResetPassword.guard';
+import { NotFoundPageComponent } from './components/notFoundPage/notFoundPage.component';
 const routes: Routes = [
   {
     path: '',
@@ -61,7 +62,8 @@ const routes: Routes = [
     component: ForgotPasswordComponent,
   },
   {
-    path: 'ResetPassword',canActivate: [resetPasswordGuard],
+    path: 'ResetPassword',
+    canActivate: [resetPasswordGuard],
     component: ResetPasswordComponent,
   },
   {
@@ -69,6 +71,15 @@ const routes: Routes = [
     canActivate: [authenticationGuard],
     component: ProductDetailsComponent,
   },
+  {
+    path: '**',
+    redirectTo: 'notFound',
+    pathMatch: 'full',
+  },
+  {
+    path: 'notFound',
+    component: NotFoundPageComponent,
+  }
 ];
 
 @NgModule({
