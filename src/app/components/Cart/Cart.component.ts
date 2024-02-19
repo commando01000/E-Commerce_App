@@ -10,6 +10,8 @@ import { CartService } from 'src/app/Services/Cart.service';
 export class CartComponent implements OnInit {
   userCart!: any[];
   totalCartPrice: number = 0;
+  isLoading: boolean = true;
+
   constructor(private _cartService: CartService) {}
 
   ngOnInit() {
@@ -23,7 +25,6 @@ export class CartComponent implements OnInit {
         this._cartService.numCartItems.next(response.numOfCartItems);
         this.userCart = response.data.products;
         // console.log(this.userCart);
-
         this.totalCartPrice = response.data.totalCartPrice;
       },
       error: (err) => {
@@ -31,6 +32,7 @@ export class CartComponent implements OnInit {
       },
       complete: () => {
         // console.log('completed !');
+        this.isLoading = false;
       },
     });
   }
@@ -49,6 +51,7 @@ export class CartComponent implements OnInit {
       },
       complete: () => {
         // console.log('completed !');
+        this.isLoading = false;
       },
     });
   }
@@ -65,6 +68,7 @@ export class CartComponent implements OnInit {
       },
       complete: () => {
         // console.log('completed !');
+        this.isLoading = false;
       },
     });
   }
