@@ -19,9 +19,44 @@ export class CartComponent implements OnInit {
   getUserCart() {
     return this._cartService.getUserCart().subscribe({
       next: (response) => {
-        console.log(response);
+        // console.log(response);
         this.userCart = response.data.products;
+        // console.log(this.userCart);
+
         this.totalCartPrice = response.data.totalCartPrice;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('completed !');
+      },
+    });
+  }
+
+  updateCartQuantity(productID: any, quantity: number) {
+    if (quantity == 0) {
+      this.removeFromCart(productID);
+    }
+    return this._cartService.updateCartQuantity(productID, quantity).subscribe({
+      next: (response) => {
+        // console.log(response);
+        this.getUserCart();
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('completed !');
+      },
+    });
+  }
+
+  removeFromCart(productID: any) {
+    this._cartService.removeItemFromCart(productID).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.getUserCart();
       },
       error: (err) => {
         console.log(err);

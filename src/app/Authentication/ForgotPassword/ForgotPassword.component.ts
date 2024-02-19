@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { ForgotPasswordService } from 'src/app/Services/ForgotPassword.service';
 
 @Component({
@@ -16,7 +17,9 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private forgotPasswordService: ForgotPasswordService,
     private _Route: Router
-  ) {}
+  ) {
+    this.forgotPasswordService.isValidCode.next(false);
+  }
 
   ngOnInit() {}
 
@@ -51,6 +54,7 @@ export class ForgotPasswordComponent implements OnInit {
       next: (response) => {
         this.successVerificationMessage = response.status;
         this.codeErrorMessage = '';
+        this.forgotPasswordService.isValidCode.next(true);
         let x = setInterval(() => {
           this._Route.navigate(['ResetPassword']);
           clearInterval(x);

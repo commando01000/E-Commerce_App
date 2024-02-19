@@ -18,8 +18,8 @@ import { ProductDetailsComponent } from './components/ProductDetails/ProductDeta
 import { CategoryComponent } from './components/Category/Category.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ForgotPasswordComponent } from './components/ForgotPassword/ForgotPassword.component';
-import { ResetPasswordComponent } from './components/ResetPassword/ResetPassword.component';
+import { ForgotPasswordComponent } from './Authentication/ForgotPassword/ForgotPassword.component';
+import { ResetPasswordComponent } from './Authentication/ResetPassword/ResetPassword.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ToastrModule } from 'ngx-toastr';

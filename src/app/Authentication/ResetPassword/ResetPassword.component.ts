@@ -13,7 +13,9 @@ export class ResetPasswordComponent implements OnInit {
   constructor(
     private _ForgotPassword: ForgotPasswordService,
     private _Route: Router
-  ) {}
+  ) {
+    this._ForgotPassword.RetypePassword.next(false);
+  }
 
   ngOnInit() {}
 
@@ -35,6 +37,7 @@ export class ResetPasswordComponent implements OnInit {
         next: (response) => {
           console.log('Reset password successful. Navigating to sign-in...');
           this.isLoading = false;
+          this._ForgotPassword.RetypePassword.next(true);
           this._Route.navigate(['sign-in']);
         },
         error: (err) => {

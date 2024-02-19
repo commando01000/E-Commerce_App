@@ -10,8 +10,10 @@ import { CategoryComponent } from './components/Category/Category.component';
 import { CartComponent } from './components/Cart/Cart.component';
 import { authenticationGuard } from './Guards/Authentication.guard';
 import { LoginGuard } from './Guards/Login.guard';
-import { ForgotPasswordComponent } from './components/ForgotPassword/ForgotPassword.component';
-import { ResetPasswordComponent } from './components/ResetPassword/ResetPassword.component';
+import { ForgotPasswordComponent } from './Authentication/ForgotPassword/ForgotPassword.component';
+import { ResetPasswordComponent } from './Authentication/ResetPassword/ResetPassword.component';
+import { ForgotPasswordGuard} from './Guards/ForgotPassword.guard';
+import { resetPasswordGuard } from './Guards/ResetPassword.guard';
 const routes: Routes = [
   {
     path: '',
@@ -55,10 +57,11 @@ const routes: Routes = [
   },
   {
     path: 'ForgotPassword',
+    canActivate: [ForgotPasswordGuard],
     component: ForgotPasswordComponent,
   },
   {
-    path: 'ResetPassword',
+    path: 'ResetPassword',canActivate: [resetPasswordGuard],
     component: ResetPasswordComponent,
   },
   {

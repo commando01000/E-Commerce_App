@@ -4,6 +4,7 @@ import { SignInService } from '../../Services/Sign-In.service';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { AuthorizedUserDataService } from 'src/app/Services/AuthorizedUserData.service';
+import { ForgotPasswordService } from 'src/app/Services/ForgotPassword.service';
 @Component({
   selector: 'app-Sign-in',
   templateUrl: './Sign-in.component.html',
@@ -12,7 +13,7 @@ import { AuthorizedUserDataService } from 'src/app/Services/AuthorizedUserData.s
 export class SignInComponent implements OnInit {
   isLoading: boolean = false;
   errorMsg!: string;
-  constructor(private _SignIn: SignInService, private _Route: Router, private _AuthUser:AuthorizedUserDataService) {}
+  constructor(private _SignIn: SignInService, private _ForgotPassword: ForgotPasswordService, private _Route: Router, private _AuthUser:AuthorizedUserDataService) {}
 
   ngOnInit() {}
 
@@ -37,6 +38,8 @@ export class SignInComponent implements OnInit {
           this._AuthUser.getUserData();
           this._Route.navigate(['home']);
           this.isLoading = false;
+          this._ForgotPassword.isValidCode.next(false);
+          this._ForgotPassword.RetypePassword.next(false);
         },
         error: (err) => {
           console.log(err);

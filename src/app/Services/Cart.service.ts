@@ -24,5 +24,27 @@ export class CartService {
       {headers: this.header}
     );
   }
+
+  removeItemFromCart(productId:any): Observable<any> {
+    return this._http.delete(
+      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      {headers: this.header},
+    );
+  }
+
+  updateCartQuantity(productId: any, count: number): Observable<any> {
+    return this._http.put(
+      `https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
+      { count },
+      {headers: this.header}
+    );
+  }
+
+  clearCart(): Observable<any> {
+    return this._http.delete(
+      'https://ecommerce.routemisr.com/api/v1/cart',
+      {headers: this.header}
+    );
+  }
 }
 
