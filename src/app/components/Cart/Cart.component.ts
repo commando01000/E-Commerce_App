@@ -22,7 +22,7 @@ export class CartComponent implements OnInit {
   getUserCart() {
     return this._cartService.getUserCart().subscribe({
       next: (response) => {
-        // console.log(response);
+        console.log(response);
         this._cartService.numCartItems.next(response.numOfCartItems);
         this.userCart = response.data.products;
         // console.log(this.userCart);

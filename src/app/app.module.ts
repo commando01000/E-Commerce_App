@@ -23,6 +23,8 @@ import { ResetPasswordComponent } from './Authentication/ResetPassword/ResetPass
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ToastrModule } from 'ngx-toastr';
+import { PaymentComponent } from './components/Payment/Payment.component';
+import { AllOrdersComponent } from './components/AllOrders/AllOrders.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ToastrModule } from 'ngx-toastr';
     ProductDetailsComponent,
     CategoryComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    PaymentComponent,
+    AllOrdersComponent,
   ],
   imports: [
     BrowserModule,

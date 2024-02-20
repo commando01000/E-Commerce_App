@@ -34,20 +34,18 @@ export class NavbarComponent implements OnInit {
       },
     });
 
-    if (this.isLogin) {
-      this._cartService.numCartItems.subscribe({
-        next: (response) => {
-          console.log(response);
-          this.cartItems = response;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-        complete: () => {
-          console.log('completed !');
-        },
-      });
-    }
+    this._cartService.numCartItems.subscribe({
+      next: (response) => {
+        console.log(response);
+        this.cartItems = response;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('completed !');
+      },
+    });
   }
   getTheUserCart() {
     this._cartService.getUserCart().subscribe({

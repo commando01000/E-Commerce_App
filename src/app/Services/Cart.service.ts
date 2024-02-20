@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthorizedUserDataService } from './AuthorizedUserData.service';
+import { FormGroup } from '@angular/forms';
 @Injectable({
   providedIn: 'root',
 })
@@ -79,5 +80,16 @@ export class CartService {
     return this._http.delete('https://ecommerce.routemisr.com/api/v1/cart', {
       headers: this.header,
     });
+  }
+  checkOut(id: any, formData: FormGroup): Observable<any> {
+    return this._http.post(
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,
+      {
+        shippingAddress: formData,
+      },
+      {
+        headers: this.header,
+      },
+    );
   }
 }

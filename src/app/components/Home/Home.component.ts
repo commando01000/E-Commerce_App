@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
     console.log(this._cartService.header.token);
     this._cartService.addToCart(productID).subscribe({
       next: (response) => {
-        // console.log(response);
+        console.log(response);
         this._cartService.numCartItems.next(response.numOfCartItems);
         console.log(this._cartService.numCartItems.getValue());
         this.toastr.success(response.message, response.status, {
