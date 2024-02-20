@@ -5,6 +5,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CategoriesService } from 'src/app/Services/Categories.service';
 import { CartService } from 'src/app/Services/Cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { WishlistService } from 'src/app/Services/Wishlist.service';
 
 @Component({
   selector: 'app-Home',
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
     private _productsService: ProductsService,
     private _CategoryService: CategoriesService,
     private _cartService: CartService,
+    private _wishListService: WishlistService,
     private toastr: ToastrService
   ) {}
 
@@ -73,6 +75,27 @@ export class HomeComponent implements OnInit {
           closeButton:true,
           progressBar:true,
         });
+      },
+      complete: () => {
+        // console.log('completed !');
+      },
+    });
+  }
+
+  addProductToWishList(productID: any) {
+    this._wishListService.AddToWishlist(productID).subscribe({
+      next: (response) => {
+        // console.log(response);
+        this._wishListService.wishListItems.next(response.data);
+        console.log(this._wishListService.wishListItems.getValue());
+        
+        this.toastr.success(response.message, response.status, {
+          closeButton:true,
+          progressBar:true,
+        });
+      },
+      error: (err) => {
+        console.log(err);
       },
       complete: () => {
         // console.log('completed !');

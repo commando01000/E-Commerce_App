@@ -12,7 +12,6 @@ export class CartService {
   };
 
   numCartItems = new BehaviorSubject(0);
-  cartItemsNumber = new BehaviorSubject(0);
 
   constructor(
     private _http: HttpClient,

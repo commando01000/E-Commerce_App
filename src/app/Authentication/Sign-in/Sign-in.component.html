@@ -13,6 +13,13 @@
               name="email"
               id="email"
               placeholder="Enter Your Email"
+              [ngClass]="{
+                'is-invalid':
+                  loginForm.get('email')?.errors &&
+                  loginForm.get('email')?.dirty,
+                'is-valid':!loginForm.get('email')?.errors &&
+                  loginForm.get('email')?.dirty,
+              }"
             />
             <div
               *ngIf="
@@ -42,8 +49,14 @@
                 formControlName="password"
                 name="password"
                 id="password"
-                aria-describedby="helpId"
                 placeholder="password"
+                [ngClass]="{
+                  'is-invalid':
+                    loginForm.get('password')?.errors &&
+                    loginForm.get('password')?.dirty,
+                  'is-valid':!loginForm.get('password')?.errors &&
+                    loginForm.get('password')?.dirty,
+                }"
               />
               <div
                 *ngIf="
@@ -79,7 +92,7 @@
                   and one special character .
                 </p>
               </div>
-              <p *ngIf="errorMsg" class="text-danger">{{errorMsg}}</p>
+              <p *ngIf="errorMsg" class="text-danger">{{ errorMsg }}</p>
             </div>
             <br />
             <div>
@@ -99,7 +112,9 @@
             </p>
             <p>
               Forgot Your Password ?
-              <a class="text-success" routerLink="/ForgotPassword">Reset Password</a>
+              <a class="text-success" routerLink="/ForgotPassword"
+                >Reset Password</a
+              >
             </p>
           </div>
         </div>

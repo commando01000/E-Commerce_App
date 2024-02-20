@@ -46,6 +46,7 @@ import { AllOrdersComponent } from './components/AllOrders/AllOrders.component';
     ResetPasswordComponent,
     PaymentComponent,
     AllOrdersComponent,
+    WishlistComponent,
   ],
   imports: [
     BrowserModule,

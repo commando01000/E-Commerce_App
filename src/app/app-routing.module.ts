@@ -17,6 +17,7 @@ import { resetPasswordGuard } from './Guards/ResetPassword.guard';
 import { NotFoundPageComponent } from './components/notFoundPage/notFoundPage.component';
 import { PaymentComponent } from './components/Payment/Payment.component';
 import { AllOrdersComponent } from './components/AllOrders/AllOrders.component';
+import { WishlistComponent } from './components/Wishlist/Wishlist.component';
 const routes: Routes = [
   {
     path: '',
@@ -77,6 +78,11 @@ const routes: Routes = [
     path: 'product_details/:id',
     canActivate: [authenticationGuard],
     component: ProductDetailsComponent,
+  },
+  {
+    path: 'wishlist',
+    canActivate: [authenticationGuard],
+    component: WishlistComponent,
   },
   {
     path: 'all-orders',canActivate:[authenticationGuard],

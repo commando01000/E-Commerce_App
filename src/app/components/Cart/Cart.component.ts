@@ -84,6 +84,9 @@ export class CartComponent implements OnInit {
       next: (response) => {
         console.log(response);
         this._cartService.numCartItems.next(0);
+        this.userCart = [];
+        this.totalCartPrice = 0;
+        this.isLoading = false;
         this.getUserCart();
       },
       error: (err) => {
