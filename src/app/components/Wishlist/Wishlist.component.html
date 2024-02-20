@@ -6,8 +6,8 @@
     <title>Wishlist</title>
   </head>
   <body>
-    <section id="wishlist">
-      <div class="container">
+    <section *ngIf="!isLoading; else loading" id="wishlist">
+      <div *ngIf="!isEmpty; else empty" class="container">
         <div class="row">
           <div class="col-md-10 m-auto">
             <div class="row" *ngFor="let item of wishList">
@@ -46,6 +46,20 @@
           </div>
         </div>
       </div>
+      <ng-template #empty>
+        <div
+          class="d-flex vh-100 justify-content-center align-items-center"
+        >
+          <h1 class="fa-8x">Your Wishlist is Empty</h1>
+        </div>
+      </ng-template>
     </section>
+    <ng-template #loading>
+      <div
+        class="loading d-flex vh-100 justify-content-center align-items-center"
+      >
+        <i class="fas fa-spinner fa-spin fa-5x text-main"></i>
+      </div>
+    </ng-template>
   </body>
 </html>

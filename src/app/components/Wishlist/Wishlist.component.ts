@@ -10,6 +10,8 @@ import { WishlistService } from 'src/app/Services/Wishlist.service';
 })
 export class WishlistComponent implements OnInit {
   wishList: any[] = [];
+  isEmpty: boolean = true;
+  isLoading: boolean = true;
   constructor(
     private _wishListService: WishlistService,
     private _cartService: CartService,
@@ -21,17 +23,26 @@ export class WishlistComponent implements OnInit {
   }
 
   getProductsFromWishList() {
+    this.isLoading = true;
     this._wishListService.getProductsFromWishlist().subscribe({
       next: (response) => {
         this._wishListService.wishListItems.next(response.data);
         this.wishList = this._wishListService.wishListItems.getValue();
         console.log('WishList Items ', this.wishList);
+        if (this.wishList.length === 0) {
+          this.isEmpty = true;
+          // console.log('WishList is empty');
+        } else {
+          this.isEmpty = false;
+          // console.log('WishList is not empty');
+        }
       },
       error: (err) => {
         console.log(err);
       },
       complete: () => {
         // console.log('completed !');
+        this.isLoading = false;
       },
     });
   }
@@ -59,8 +70,8 @@ export class WishlistComponent implements OnInit {
         console.log(response);
         this._cartService.numCartItems.next(response.numOfCartItems);
         this.toastr.success(response.message, response.status, {
-          closeButton:true,
-          progressBar:true,
+          closeButton: true,
+          progressBar: true,
         });
         this._cartService.getUserCart();
         this.removeProductFromWishList(productID);
@@ -69,8 +80,8 @@ export class WishlistComponent implements OnInit {
         console.log(err);
         this.toastr.error(err.message, 'Error', {
           timeOut: 2000,
-          closeButton:true,
-          progressBar:true,
+          closeButton: true,
+          progressBar: true,
         });
       },
       complete: () => {
