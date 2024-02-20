@@ -11,6 +11,7 @@ export class CartService {
   };
 
   numCartItems = new BehaviorSubject(0);
+  cartItemsNumber = new BehaviorSubject(0);
 
   constructor(
     private _http: HttpClient,
@@ -19,8 +20,8 @@ export class CartService {
     if (localStorage.getItem('token')) {
       this.getUserCart().subscribe({
         next: (response) => {
+          console.log(response);
           this.numCartItems.next(response.numOfCartItems);
-          console.log(this.numCartItems.getValue());
         },
         error: (err) => {
           console.log(err);

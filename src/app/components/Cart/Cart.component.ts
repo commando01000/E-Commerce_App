@@ -14,7 +14,9 @@ export class CartComponent implements OnInit {
   constructor(private _cartService: CartService) {}
 
   ngOnInit() {
-    this.getUserCart();
+    if(localStorage.getItem('token')){
+      this.getUserCart();
+    }
   }
 
   getUserCart() {
@@ -57,6 +59,7 @@ export class CartComponent implements OnInit {
 
   removeFromCart(productID: any) {
     this.isLoading = true;
+    console.log(this._cartService.header.token);
     this._cartService.removeItemFromCart(productID).subscribe({
       next: (response) => {
         console.log(response);
