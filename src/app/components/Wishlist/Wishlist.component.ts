@@ -67,6 +67,11 @@ export class WishlistComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
+        this.toastr.error(err.message, 'Error', {
+          timeOut: 2000,
+          closeButton:true,
+          progressBar:true,
+        });
       },
       complete: () => {
         // console.log('completed !');
