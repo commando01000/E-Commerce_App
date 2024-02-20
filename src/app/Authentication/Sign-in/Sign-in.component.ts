@@ -14,7 +14,13 @@ import { CartService } from 'src/app/Services/Cart.service';
 export class SignInComponent implements OnInit {
   isLoading: boolean = false;
   errorMsg!: string;
-  constructor(private _SignIn: SignInService, private _ForgotPassword: ForgotPasswordService, private _Route: Router, private _AuthUser:AuthorizedUserDataService, private _cartService: CartService) {}
+  constructor(
+    private _SignIn: SignInService,
+    private _ForgotPassword: ForgotPasswordService,
+    private _Route: Router,
+    private _AuthUser: AuthorizedUserDataService,
+    private _cartService: CartService
+  ) {}
 
   ngOnInit() {}
 
@@ -36,6 +42,7 @@ export class SignInComponent implements OnInit {
         next: (response) => {
           // console.log(response.token);
           localStorage.setItem('token', response.token);
+          this._AuthUser.freshToken.next(response.token);
           this._AuthUser.getUserData();
           this._Route.navigate(['home']);
           this.isLoading = false;

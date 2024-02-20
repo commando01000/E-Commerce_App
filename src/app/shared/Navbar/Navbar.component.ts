@@ -14,25 +14,16 @@ export class NavbarComponent implements OnInit {
     private _AuthUser: AuthorizedUserDataService,
     private _cartService: CartService
   ) {
-    this._cartService.numCartItems.subscribe({
-      next: (response) => {
-        console.log(response);
-        this.cartItems = response;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        console.log('completed !');
-      },
-    });
-
     _AuthUser.userData.subscribe({
       next: () => {
         if (this._AuthUser.userData.getValue()) {
           // console.log(this._AuthUser.userData);
           this.isLogin = true;
           console.log('there is user data');
+          let token: any = localStorage.getItem('token');
+          this._AuthUser.freshToken.next(token);
+          console.log(this._AuthUser.freshToken.getValue());
+          this.getTheUserCart();
         } else {
           console.log('no user data');
           this.isLogin = false;
@@ -42,11 +33,42 @@ export class NavbarComponent implements OnInit {
         console.log(err);
       },
     });
-  }
 
+    if (this.isLogin) {
+      this._cartService.numCartItems.subscribe({
+        next: (response) => {
+          console.log(response);
+          this.cartItems = response;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+          console.log('completed !');
+        },
+      });
+    }
+  }
+  getTheUserCart() {
+    this._cartService.getUserCart().subscribe({
+      next: (response) => {
+        this._cartService.numCartItems.next(response.numOfCartItems);
+        this.cartItems = this._cartService.numCartItems.getValue();
+        console.log(this._cartService.numCartItems.getValue());
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('completed !');
+      },
+    });
+  }
   ngOnInit() {}
 
   logout() {
     this._AuthUser.removeUserData();
+    this._cartService.numCartItems.next(0);
+    this.isLogin = false;
   }
 }

@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthorizedUserDataService {
   userData = new BehaviorSubject(null);
+  freshToken = new BehaviorSubject(null);
   constructor(private _Route: Router) {
     if (localStorage.getItem('token')) {
       this.getUserData();
@@ -16,6 +17,8 @@ export class AuthorizedUserDataService {
   }
   getUserData(): any {
     let encodedToken: any = localStorage.getItem('token');
+    this.freshToken.next(encodedToken);
+    console.log(this.freshToken.getValue());
     let decodedToken: any = jwtDecode(encodedToken);
     this.userData.next(decodedToken);
     // console.log(this.userData);
@@ -23,6 +26,7 @@ export class AuthorizedUserDataService {
   removeUserData() {
     localStorage.removeItem('token');
     this.userData.next(null);
+    this.freshToken.next(null);
     this._Route.navigate(['sign-in']);
   }
 }

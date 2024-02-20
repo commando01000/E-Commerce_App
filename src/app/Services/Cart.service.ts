@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AuthorizedUserDataService } from './AuthorizedUserData.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,8 +12,12 @@ export class CartService {
 
   numCartItems = new BehaviorSubject(0);
 
-  constructor(private _http: HttpClient) {
-    this.getUserCart().subscribe({
+  constructor(
+    private _http: HttpClient,
+    private _AuthUser: AuthorizedUserDataService
+  ) {
+    if (localStorage.getItem('token')) {
+      this.getUserCart().subscribe({
         next: (response) => {
           this.numCartItems.next(response.numOfCartItems);
           console.log(this.numCartItems.getValue());
@@ -24,6 +29,20 @@ export class CartService {
           console.log('completed !');
         },
       });
+    }
+
+    this._AuthUser.freshToken.subscribe({
+      next: (response) => {
+        this.header.token = response;
+        console.log(this.header.token);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('completed !');
+      },
+    });
   }
 
   addToCart(productId: number): Observable<any> {
