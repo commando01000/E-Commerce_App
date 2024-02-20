@@ -6,19 +6,22 @@
     <title>Home</title>
   </head>
   <body>
-
     <section id="categories" class="mt-4 pt-5">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
             <owl-carousel-o [options]="customOptions">
-          
               <ng-container *ngFor="let slide of categories">
                 <ng-template carouselSlide [id]="slide._id">
-                  <img [src]="slide.image" class="w-100" height="450" [alt]="slide.name" [title]="slide.name">
+                  <img
+                    [src]="slide.image"
+                    class="w-100"
+                    height="450"
+                    [alt]="slide.name"
+                    [title]="slide.name"
+                  />
                 </ng-template>
               </ng-container>
-          
             </owl-carousel-o>
           </div>
         </div>
@@ -29,21 +32,25 @@
       <div *ngIf="!isLoading; else loading" class="container">
         <div class="row gy-3">
           <h1 class="text-center">Products</h1>
-          <div
-            *ngFor="let product of products"
-            class="col-md-3"
-          >
+          <div *ngFor="let product of products" class="col-md-3">
             <div class="card overflow-hidden p-2 product">
-              <img [src]="product.imageCover" [routerLink]="['/product_details', product._id]" alt="{{ product.title }}" />
+              <img
+                [src]="product.imageCover"
+                [routerLink]="['/product_details', product._id]"
+                alt="{{ product.title }}"
+              />
               <p>{{ product.category.name }}</p>
               <div class="description d-flex justify-content-between">
-                <p>{{ product.price | currency: "EGP" }}</p>
+                <p>{{ product.price | currency : "EGP" }}</p>
                 <p>
                   {{ product.ratingsQuantity }}
                   <i class="rating-color fas fa-star"></i>
                 </p>
               </div>
-              <button (click)="addToCart(product._id)" class="btn bg-main w-100 text-light">
+              <button
+                (click)="addToCart(product._id)"
+                class="btn bg-main w-100 text-light"
+              >
                 Add to cart <i class="fas fa-shopping-cart"></i>
               </button>
             </div>
