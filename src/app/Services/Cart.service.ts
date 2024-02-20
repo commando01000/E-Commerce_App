@@ -77,10 +77,12 @@ export class CartService {
   }
 
   clearCart(): Observable<any> {
+    console.log(this.header.token);
     return this._http.delete('https://ecommerce.routemisr.com/api/v1/cart', {
       headers: this.header,
     });
   }
+
   checkOut(id: any, formData: FormGroup): Observable<any> {
     return this._http.post(
       `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,

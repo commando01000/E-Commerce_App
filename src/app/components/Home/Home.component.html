@@ -37,7 +37,7 @@
               <img [src]="product.imageCover" [routerLink]="['/product_details', product._id]" alt="{{ product.title }}" />
               <p>{{ product.category.name }}</p>
               <div class="description d-flex justify-content-between">
-                <p>{{ product.price | currency }}</p>
+                <p>{{ product.price | currency: "EGP" }}</p>
                 <p>
                   {{ product.ratingsQuantity }}
                   <i class="rating-color fas fa-star"></i>

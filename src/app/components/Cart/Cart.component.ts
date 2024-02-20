@@ -10,7 +10,6 @@ export class CartComponent implements OnInit {
   userCart!: any[];
   totalCartPrice: number = 0;
   isLoading: boolean = true;
-
   constructor(private _cartService: CartService) {}
 
   ngOnInit() {
@@ -30,6 +29,10 @@ export class CartComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
+        this._cartService.numCartItems.next(0);
+        this.userCart = [];
+        this.totalCartPrice = 0;
+        this.isLoading = false;
       },
       complete: () => {
         // console.log('completed !');
@@ -65,6 +68,23 @@ export class CartComponent implements OnInit {
         console.log(response);
         this.getUserCart();
         this._cartService.numCartItems.next(response.numOfCartItems);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        // console.log('completed !');
+        this.isLoading = false;
+      },
+    });
+  }
+
+  emptyCart() {
+    return this._cartService.clearCart().subscribe({
+      next: (response) => {
+        console.log(response);
+        this._cartService.numCartItems.next(0);
+        this.getUserCart();
       },
       error: (err) => {
         console.log(err);
