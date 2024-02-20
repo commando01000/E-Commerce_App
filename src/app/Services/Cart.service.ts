@@ -9,20 +9,21 @@ export class CartService {
     token: localStorage.getItem('token'),
   };
 
-  numCartItems: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  numCartItems = new BehaviorSubject(0);
 
   constructor(private _http: HttpClient) {
     this.getUserCart().subscribe({
-      next: (response) => {
-        this.numCartItems.next(response.numOfCartItems);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        console.log('completed !');
-      },
-    });
+        next: (response) => {
+          this.numCartItems.next(response.numOfCartItems);
+          console.log(this.numCartItems.getValue());
+        },
+        error: (err) => {
+          console.log(err);
+        },
+        complete: () => {
+          console.log('completed !');
+        },
+      });
   }
 
   addToCart(productId: number): Observable<any> {
@@ -33,6 +34,7 @@ export class CartService {
     );
   }
   getUserCart(): Observable<any> {
+    console.log(this.header.token);
     return this._http.get('https://ecommerce.routemisr.com/api/v1/cart', {
       headers: this.header,
     });

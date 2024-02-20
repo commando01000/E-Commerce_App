@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { AuthorizedUserDataService } from 'src/app/Services/AuthorizedUserData.service';
 import { ForgotPasswordService } from 'src/app/Services/ForgotPassword.service';
+import { CartService } from 'src/app/Services/Cart.service';
 @Component({
   selector: 'app-Sign-in',
   templateUrl: './Sign-in.component.html',
@@ -13,7 +14,7 @@ import { ForgotPasswordService } from 'src/app/Services/ForgotPassword.service';
 export class SignInComponent implements OnInit {
   isLoading: boolean = false;
   errorMsg!: string;
-  constructor(private _SignIn: SignInService, private _ForgotPassword: ForgotPasswordService, private _Route: Router, private _AuthUser:AuthorizedUserDataService) {}
+  constructor(private _SignIn: SignInService, private _ForgotPassword: ForgotPasswordService, private _Route: Router, private _AuthUser:AuthorizedUserDataService, private _cartService: CartService) {}
 
   ngOnInit() {}
 

@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   ) {
     this._cartService.numCartItems.subscribe({
       next: (response) => {
-        // console.log(response);
+        console.log(response);
         this.cartItems = response;
       },
       error: (err) => {
