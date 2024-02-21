@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/Navbar/Navbar.component';
@@ -16,7 +15,7 @@ import { HomeComponent } from './components/Home/Home.component';
 import { ProductsComponent } from './components/Products/Products.component';
 import { ProductDetailsComponent } from './components/ProductDetails/ProductDetails.component';
 import { CategoryComponent } from './components/Category/Category.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgotPasswordComponent } from './Authentication/ForgotPassword/ForgotPassword.component';
 import { ResetPasswordComponent } from './Authentication/ResetPassword/ResetPassword.component';
@@ -25,7 +24,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ToastrModule } from 'ngx-toastr';
 import { PaymentComponent } from './components/Payment/Payment.component';
 import { AllOrdersComponent } from './components/AllOrders/AllOrders.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +53,7 @@ import { AllOrdersComponent } from './components/AllOrders/AllOrders.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CarouselModule,
+    FormsModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

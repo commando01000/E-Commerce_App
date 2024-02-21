@@ -39,6 +39,7 @@
                 [routerLink]="['/product_details', product._id]"
                 alt="{{ product.title }}"
               />
+              <p>{{product.title}}</p>
               <p>{{ product.category.name }}</p>
               <div class="description d-flex justify-content-between">
                 <p>{{ product.price | currency : "EGP" }}</p>

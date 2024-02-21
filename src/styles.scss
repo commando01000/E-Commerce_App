@@ -15,6 +15,10 @@ body {
   color: $ratingColor;
 }
 
+.active {
+  color: #0aad0a !important;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
