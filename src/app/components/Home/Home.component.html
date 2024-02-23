@@ -6,11 +6,57 @@
     <title>Home</title>
   </head>
   <body>
-    <section id="categories" class="mt-4 pt-5">
+    <section id="slider-categories" class="mt-4 pt-5 pb-5">
+      <div class="container">
+        <div class="row gx-0">
+          <div class="col-md-9">
+            <owl-carousel-o [options]="customOptions">
+              <ng-template carouselSlide>
+                <img
+                  height="400"
+                  src="./assets/finalProject_assets/images/slider-image-1.jpeg"
+                  alt="slide1"
+                />
+              </ng-template>
+              <ng-template carouselSlide>
+                <img
+                  height="400"
+                  src="./assets/finalProject_assets/images/slider-image-2.jpeg"
+                  alt="slide2"
+                />
+              </ng-template>
+              <ng-template carouselSlide>
+                <img
+                  height="400"
+                  src="./assets/finalProject_assets/images/slider-image-3.jpeg"
+                  alt="slide3"
+                />
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+          <div class="col-md-3">
+            <img
+              height="200"
+              class="w-100"
+              src="./assets/finalProject_assets/images/slider-image-1.jpeg"
+              alt="category1"
+            />
+            <img
+              height="200"
+              class="w-100"
+              src="./assets/finalProject_assets/images/slider-image-2.jpeg"
+              alt="category2"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories" class="mt-4 pt-5 pb-5">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <owl-carousel-o [options]="customOptions">
+            <owl-carousel-o [options]="categoryOption">
               <ng-container *ngFor="let slide of categories">
                 <ng-template carouselSlide [id]="slide._id">
                   <img
@@ -39,7 +85,7 @@
                 [routerLink]="['/product_details', product._id]"
                 alt="{{ product.title }}"
               />
-              <p>{{product.title}}</p>
+              <p>{{ product.title }}</p>
               <p>{{ product.category.name }}</p>
               <div class="description d-flex justify-content-between">
                 <p>{{ product.price | currency : "EGP" }}</p>

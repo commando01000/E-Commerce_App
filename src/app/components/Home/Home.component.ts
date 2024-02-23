@@ -103,7 +103,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  customOptions: OwlOptions = {
+  categoryOption: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
@@ -125,6 +125,17 @@ export class HomeComponent implements OnInit {
         items: 4,
       },
     },
+    nav: true,
+  };
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    navText: ['next', 'prev'],
+    items: 1,
     nav: true,
   };
 }
