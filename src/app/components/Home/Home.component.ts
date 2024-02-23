@@ -134,8 +134,8 @@ export class HomeComponent implements OnInit {
     pullDrag: false,
     dots: true,
     navSpeed: 700,
-    navText: ['next', 'prev'],
+    navText: ['', ''],
     items: 1,
-    nav: true,
+    nav: false,
   };
 }
