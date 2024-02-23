@@ -85,7 +85,7 @@ const routes: Routes = [
     component: WishlistComponent,
   },
   {
-    path: 'allorders',
+    path: 'allorders',canActivate: [authenticationGuard],
     component: AllOrdersComponent,
   },
   {
