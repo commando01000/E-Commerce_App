@@ -54,4 +54,29 @@ a:hover {
   background-color: $lightBgColor !important;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $lightBgColor;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $bgColor;
+}
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-up{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 9999;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  background-color: $bgColor;
+}
