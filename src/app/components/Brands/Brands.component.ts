@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { BrandsService } from 'src/app/Services/Brands.service';
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-Brands',
   templateUrl: './Brands.component.html',
