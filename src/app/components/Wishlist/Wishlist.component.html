@@ -6,11 +6,11 @@
     <title>Wishlist</title>
   </head>
   <body>
-    <section *ngIf="!isLoading; else loading" id="wishlist">
+    <section class="min-vh-100 p-5 m-5" *ngIf="!isLoading; else loading" id="wishlist">
       <div *ngIf="!isEmpty; else empty" class="container">
         <div class="row">
           <div class="col-md-10 m-auto">
-            <div class="row" *ngFor="let item of wishList">
+            <div class="row gy-3" *ngFor="let item of wishList">
               <div class="col-md-2 d-flex align-items-center">
                 <img
                   [src]="item?.imageCover"
@@ -42,6 +42,7 @@
                 </button>
                 </div>
               </div>
+              <hr>
             </div>
           </div>
         </div>

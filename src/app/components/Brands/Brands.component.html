@@ -10,8 +10,8 @@
     <title>Brands</title>
   </head>
   <body>
-    <section id="brands">
-      <div *ngIf="!isLoading; else loading" class="container mt-5 pt-5">
+    <section id="brands" class="min-vh-100 p-5 m-5">
+      <div *ngIf="!isLoading; else loading" class="container">
         <h1 class="text-center fw-bolder pb-3 text-success">Brands</h1>
         <div class="row gx-3 gy-3">
           <div *ngFor="let brand of brands" class="col-md-3">
