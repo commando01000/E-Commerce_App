@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignInService } from '../../Services/Sign-In.service';
 import { Router } from '@angular/router';
@@ -14,6 +18,8 @@ import { CartService } from 'src/app/Services/Cart.service';
 export class SignInComponent implements OnInit {
   isLoading: boolean = false;
   errorMsg!: string;
+  hide: boolean = true;
+  
   constructor(
     private _SignIn: SignInService,
     private _ForgotPassword: ForgotPasswordService,

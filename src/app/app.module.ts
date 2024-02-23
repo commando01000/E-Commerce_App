@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/Navbar/Navbar.component';
@@ -24,6 +25,11 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ToastrModule } from 'ngx-toastr';
 import { PaymentComponent } from './components/Payment/Payment.component';
 import { AllOrdersComponent } from './components/AllOrders/AllOrders.component';
+
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +60,11 @@ import { AllOrdersComponent } from './components/AllOrders/AllOrders.component';
     BrowserAnimationsModule,
     CarouselModule,
     FormsModule,
+    MatSlideToggleModule,
+    MatIconModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

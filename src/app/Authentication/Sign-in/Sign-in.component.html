@@ -5,22 +5,25 @@
       <div class="row">
         <div class="col-md-8 m-auto bg-light shadow p-5 my-3">
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              formControlName="email"
-              name="email"
-              id="email"
-              placeholder="Enter Your Email"
-              [ngClass]="{
-                'is-invalid':
-                  loginForm.get('email')?.errors &&
-                  loginForm.get('email')?.dirty,
-                'is-valid':!loginForm.get('email')?.errors &&
-                  loginForm.get('email')?.dirty,
-              }"
-            />
+            <mat-form-field class="w-100">
+              <mat-label>Enter your email</mat-label>
+              <input
+                type="email"
+                formControlName="email"
+                name="email"
+                id="email"
+                placeholder="Enter Your Email"
+                matInput
+                placeholder="pat@example.com"
+                [ngClass]="{
+                  'is-invalid':
+                    loginForm.get('email')?.errors &&
+                    loginForm.get('email')?.dirty,
+                  'is-valid':!loginForm.get('email')?.errors &&
+                    loginForm.get('email')?.dirty,
+                }"
+              />
+            </mat-form-field>
             <div
               *ngIf="
                 loginForm.get('email')?.errors &&
@@ -42,22 +45,34 @@
               </p>
             </div>
             <div class="mb-3 mt-2">
-              <label for="password" class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                formControlName="password"
-                name="password"
-                id="password"
-                placeholder="password"
-                [ngClass]="{
-                  'is-invalid':
-                    loginForm.get('password')?.errors &&
-                    loginForm.get('password')?.dirty,
-                  'is-valid':!loginForm.get('password')?.errors &&
-                    loginForm.get('password')?.dirty,
-                }"
-              />
+              <mat-form-field class="w-100">
+                <mat-label>Enter your password</mat-label>
+                <input
+                  type="password"
+                  formControlName="password"
+                  name="password"
+                  id="password"
+                  [ngClass]="{
+                    'is-invalid':
+                      loginForm.get('password')?.errors &&
+                      loginForm.get('password')?.dirty,
+                    'is-valid':!loginForm.get('password')?.errors &&
+                      loginForm.get('password')?.dirty,
+                  }"
+                  matInput
+                  [type]="hide ? 'password' : 'text'"
+                />
+                <button
+                  type="button"
+                  mat-icon-button
+                  matSuffix
+                  (click)="hide = !hide"
+                >
+                  <mat-icon>{{
+                    hide ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+              </mat-form-field>
               <div
                 *ngIf="
                   loginForm.get('password')?.errors &&
