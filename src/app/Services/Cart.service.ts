@@ -35,7 +35,7 @@ export class CartService {
     this._AuthUser.freshToken.subscribe({
       next: (response) => {
         this.header.token = response;
-        console.log(this.header.token);
+        // console.log(this.header.token);
       },
       error: (err) => {
         console.log(err);
