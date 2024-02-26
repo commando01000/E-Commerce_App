@@ -81,21 +81,24 @@
           <div *ngFor="let product of products" class="col-md-3">
             <div class="card overflow-hidden p-2 product">
               <img
-                [src]="product.imageCover"
-                [routerLink]="['/product_details', product._id]"
-                alt="{{ product.title }}"
+                [src]="product?.imageCover"
+                [routerLink]="['/product_details', product?._id]"
+                alt="{{ product?.title }}"
               />
-              <p>{{ product.title }}</p>
-              <p>{{ product.category.name }}</p>
+              <p>{{ product?.title }}</p>
+              <p>{{ product?.category?.name }}</p>
               <div class="description d-flex justify-content-between">
-                <p>{{ product.price | currency : "EGP" }}</p>
+                <p>{{ product?.price | currency : "EGP" }}</p>
                 <div>
                   <p>
-                    {{ product.ratingsQuantity }}
+                    {{ product?.ratingsQuantity }}
                     <i class="rating-color fas fa-star"></i>
                   </p>
-                  <p (click)="addProductToWishList(product._id)">
-                    <i class="fa-solid fa-heart h3"></i>
+                  <p *ngIf="!WishlistItems.includes(product?._id)" (click)="addProductToWishList(product?._id)">
+                    <i class="wishlist fa-regular fa-heart h3"></i>
+                  </p>
+                  <p *ngIf="WishlistItems.includes(product?._id)" (click)="removeProductFromWishList(product?._id)">
+                    <i class="wishlist fa-solid fa-heart h3"></i>
                   </p>
                 </div>
               </div>

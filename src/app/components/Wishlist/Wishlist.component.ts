@@ -28,7 +28,7 @@ export class WishlistComponent implements OnInit {
       next: (response) => {
         this._wishListService.wishListItems.next(response.data);
         this.wishList = this._wishListService.wishListItems.getValue();
-        console.log('WishList Items ', this.wishList);
+        console.log('WishList Data ', this.wishList);
         if (this.wishList.length === 0) {
           this.isEmpty = true;
           // console.log('WishList is empty');
