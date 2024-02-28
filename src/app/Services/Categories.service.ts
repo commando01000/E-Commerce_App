@@ -11,4 +11,9 @@ export class CategoriesService {
   getCategories(): Observable<any> {
     return this._http.get(`https://ecommerce.routemisr.com/api/v1/categories/`);
   }
+  getSubCategoriesBasedOnCategory(categoryId: string): Observable<any> {
+    return this._http.get(
+      `https://ecommerce.routemisr.com/api/v1/categories/${categoryId}/subcategories`
+    );
+  }
 }

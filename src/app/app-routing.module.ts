@@ -18,6 +18,7 @@ import { NotFoundPageComponent } from './components/notFoundPage/notFoundPage.co
 import { PaymentComponent } from './components/Payment/Payment.component';
 import { AllOrdersComponent } from './components/AllOrders/AllOrders.component';
 import { WishlistComponent } from './components/Wishlist/Wishlist.component';
+import { SubCategoryComponent } from './components/SubCategory/SubCategory.component';
 const routes: Routes = [
   {
     path: '',
@@ -85,8 +86,14 @@ const routes: Routes = [
     component: WishlistComponent,
   },
   {
-    path: 'allorders',canActivate: [authenticationGuard],
+    path: 'allorders',
+    canActivate: [authenticationGuard],
     component: AllOrdersComponent,
+  },
+  {
+    path: 'sub_category/:id',
+    canActivate: [authenticationGuard],
+    component: SubCategoryComponent,
   },
   {
     path: '**',
@@ -96,7 +103,7 @@ const routes: Routes = [
   {
     path: 'notFound',
     component: NotFoundPageComponent,
-  }
+  },
 ];
 
 @NgModule({

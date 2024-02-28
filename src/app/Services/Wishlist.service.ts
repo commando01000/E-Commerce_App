@@ -11,9 +11,13 @@ export class WishlistService {
   header: any = {
     token: localStorage.getItem('token'),
   };
-  wishListItems:any = new BehaviorSubject([]);
-  
-  constructor(private _http: HttpClient, private _AuthUser: AuthorizedUserDataService, private_cartService: CartService) {
+  wishListItems: any = new BehaviorSubject([]);
+
+  constructor(
+    private _http: HttpClient,
+    private _AuthUser: AuthorizedUserDataService,
+    private_cartService: CartService
+  ) {
     this._AuthUser.freshToken.subscribe({
       next: (response) => {
         this.header.token = response;

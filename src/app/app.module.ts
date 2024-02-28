@@ -26,11 +26,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { PaymentComponent } from './components/Payment/Payment.component';
 import { AllOrdersComponent } from './components/AllOrders/AllOrders.component';
 
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SubCategoryComponent } from './components/SubCategory/SubCategory.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     PaymentComponent,
     AllOrdersComponent,
     WishlistComponent,
+    SubCategoryComponent,
   ],
   imports: [
     BrowserModule,

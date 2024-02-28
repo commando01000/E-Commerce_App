@@ -30,13 +30,10 @@ export class HomeComponent implements OnInit {
     this.getCategories();
     this._wishListService.getProductsFromWishlist().subscribe({
       next: (response) => {
-        for(var i = 0; i < response.data.length; i++){
+        for (var i = 0; i < response.data.length; i++) {
           this.WishlistItems.push(response.data[i]._id);
         }
-        console.log(
-          'WishList Items ',
-          this.WishlistItems
-        );
+        console.log('WishList Items ', this.WishlistItems);
       },
       error: (err) => {
         console.log(err);
@@ -44,11 +41,12 @@ export class HomeComponent implements OnInit {
       complete: () => {
         // console.log('completed !');
       },
-    })
+    });
     this._productsService.getAllProducts().subscribe({
       next: (results) => {
         // console.log(results.data);
         this.products = results.data;
+
         this.isLoading = false;
       },
       error: (err) => {
@@ -107,6 +105,7 @@ export class HomeComponent implements OnInit {
         console.log(response);
         this._wishListService.wishListItems.next(response.data);
         this.WishlistItems = this._wishListService.wishListItems.getValue();
+
         // console.log(
         //   'WishList Items ',
         //   this._wishListService.wishListItems.getValue()
