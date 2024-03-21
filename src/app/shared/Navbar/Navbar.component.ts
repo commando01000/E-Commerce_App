@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 import { AuthorizedUserDataService } from 'src/app/Services/AuthorizedUserData.service';
 import { CartService } from 'src/app/Services/Cart.service';
 
@@ -10,9 +17,24 @@ import { CartService } from 'src/app/Services/Cart.service';
 export class NavbarComponent implements OnInit {
   isLogin: boolean = false;
   cartItems!: number;
+  @ViewChild('navBar') navBar!: ElementRef;
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    if (scrollY > 500) {
+      this._Renderer.addClass(this.navBar.nativeElement, 'px-5');
+      this._Renderer.setStyle(this.navBar.nativeElement, 'transition', '0.5s ease');
+    }
+    else
+    {
+      this._Renderer.removeClass(this.navBar.nativeElement, 'px-5');
+    }
+  }
+
   constructor(
     private _AuthUser: AuthorizedUserDataService,
-    private _cartService: CartService
+    private _cartService: CartService,
+    private _Renderer: Renderer2
   ) {
     _AuthUser.userData.subscribe({
       next: () => {
